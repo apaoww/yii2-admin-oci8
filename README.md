@@ -18,7 +18,7 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require apaoww/yii2-admin-oci8 "~1.0"
+php composer.phar require apaoww/yii2-admin-oci8 "dev-master"
 ```
 
 for dev-master
@@ -30,7 +30,7 @@ php composer.phar require apaoww/yii2-admin-oci8 "dev-master"
 or add
 
 ```
-"apaoww/yii2-admin-oci8": "~1.0"
+"apaoww/yii2-admin-oci8": "dev-master"
 ```
 
 to the require section of your `composer.json` file.
