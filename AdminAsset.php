@@ -5,7 +5,7 @@ namespace apaoww\AdminOci8;
 /**
  * AdminAsset
  *
- * @author Misbahul D Munir <misbahuldmunir@gmail.com>
+ * @author Apaoww <apao.oww@gmail.com>
  * @since 1.0
  */
 class AdminAsset extends \yii\web\AssetBundle
@@ -13,7 +13,7 @@ class AdminAsset extends \yii\web\AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@mdm/admin/assets';
+    public $sourcePath = '@apaoww/admin/AdminOci8';
 
     /**
      * @inheritdoc
