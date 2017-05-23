@@ -30,7 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template'=>'{view}'
+                'template'=>'{view}',
+                'buttons'=> [
+                    'view'=>function ($url, $model, $key) {
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'id' => $model['id']], [
+                            'class' => 'activity-view-link',
+
+
+                        ]);
+                    }
+                ]
             ],
         ],
     ]);

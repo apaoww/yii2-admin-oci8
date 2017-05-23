@@ -4,7 +4,7 @@ namespace apaoww\AdminOci8\models\searchs;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-
+use Yii;
 /**
  * AssignmentSearch represents the model behind the search form about Assignment.
  * 
