@@ -33,8 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template'=>'{view}',
 
                 'buttons' => [
-                    'view' => function ($url, $model, $key) {
-                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'id' => $model['id']], [
+                    'view' => function ($url, $model, $key) use ($idField) {
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'id' => $model[$idField]], [
                             'class' => 'activity-view-link',
 
 
