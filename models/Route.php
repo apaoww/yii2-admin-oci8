@@ -11,7 +11,7 @@ class Route extends \yii\base\Model
     /**
      * @var string Route value. 
      */
-    public $route;
+    public $ROUTE;
 
     /**
      * @inheritdoc
@@ -19,7 +19,7 @@ class Route extends \yii\base\Model
     public function rules()
     {
         return[
-            [['route'],'safe'],
+            [['ROUTE'],'safe'],
         ];
     }
 }

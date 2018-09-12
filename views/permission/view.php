@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model apaoww\AdminOci8\models\AuthItem */
 
-$this->title = $model->name;
+$this->title = $model->NAME;
 $this->params['breadcrumbs'][] = ['label' => 'Permissions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,9 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('rbac-admin', 'Update'), ['update', 'id' => $model->name], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('rbac-admin', 'Update'), ['update', 'id' => $model->NAME], ['class' => 'btn btn-primary']) ?>
         <?php
-        echo Html::a(Yii::t('rbac-admin', 'Delete'), ['delete', 'id' => $model->name], [
+        echo Html::a(Yii::t('rbac-admin', 'Delete'), ['delete', 'id' => $model->NAME], [
             'class' => 'btn btn-danger',
             'data-confirm' => Yii::t('rbac-admin', 'Are you sure to delete this item?'),
             'data-method' => 'post',
@@ -29,10 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
     echo DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'name',
-            'description:ntext',
-            'ruleName',
-            'data:ntext',
+            'NAME',
+            'DESCRIPTION:ntext',
+            'RULENAME',
+            'DATA:ntext',
         ],
     ]);
     ?>
@@ -67,4 +67,4 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 <?php
-$this->render('_script',['name'=>$model->name]);
+$this->render('_script',['name'=>$model->NAME]);

@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
  * @var yii\web\View $this
  * @var apaoww\AdminOci8\models\AuthItem $model
  */
-$this->title = $model->name;
+$this->title = $model->NAME;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('rbac-admin', 'Roles'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,9 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('rbac-admin', 'Update'), ['update', 'id' => $model->name], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('rbac-admin', 'Update'), ['update', 'id' => $model->NAME], ['class' => 'btn btn-primary']) ?>
         <?php
-        echo Html::a(Yii::t('rbac-admin', 'Delete'), ['delete', 'id' => $model->name], [
+        echo Html::a(Yii::t('rbac-admin', 'Delete'), ['delete', 'id' => $model->NAME], [
             'class' => 'btn btn-danger',
             'data-confirm' => Yii::t('rbac-admin', 'Are you sure to delete this item?'),
             'data-method' => 'post',
@@ -30,10 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
     echo DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'name',
-            'description:ntext',
-            'ruleName',
-            'data:ntext',
+            'NAME',
+            'DESCRIPTION:ntext',
+            'RULENAME',
+            'DATA:ntext',
         ],
     ]);
     ?>
@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Yii::t('rbac-admin', 'Avaliable') ?>:
         <?php
         echo Html::textInput('search_av', '', ['class' => 'role-search', 'data-target' => 'avaliable']) . '<br>';
-        echo Html::listBox('roles', '', $avaliable, [
+        echo Html::listBox('ROLES', '', $avaliable, [
             'id' => 'avaliable',
             'multiple' => true,
             'size' => 20,
@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Yii::t('rbac-admin', 'Assigned') ?>:
         <?php
         echo Html::textInput('search_asgn', '', ['class' => 'role-search','data-target' => 'assigned']) . '<br>';
-        echo Html::listBox('roles', '', $assigned, [
+        echo Html::listBox('ROLES', '', $assigned, [
             'id' => 'assigned',
             'multiple' => true,
             'size' => 20,
@@ -68,4 +68,4 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 <?php
-$this->render('_script',['name'=>$model->name]);
+$this->render('_script',['name'=>$model->NAME]);

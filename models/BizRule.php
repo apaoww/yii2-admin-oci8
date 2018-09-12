@@ -16,22 +16,22 @@ class BizRule extends \yii\base\Model
     /**
      * @var string name of the rule
      */
-    public $name;
+    public $NAME;
 
     /**
      * @var integer UNIX timestamp representing the rule creation time
      */
-    public $createdAt;
+    public $CREATEDAT;
 
     /**
      * @var integer UNIX timestamp representing the rule updating time
      */
-    public $updatedAt;
+    public $UPDATEDAT;
 
     /**
      * @var string Rule classname.
      */
-    public $className;
+    public $CLASSNAME;
 
     /**
      * @var Rule
@@ -47,8 +47,8 @@ class BizRule extends \yii\base\Model
     {
         $this->_item = $item;
         if ($item !== null) {
-            $this->name = $item->name;
-            $this->className = get_class($item);
+            $this->NAME = $item->name;
+            $this->CLASSNAME = get_class($item);
         }
         parent::__construct($config);
     }
@@ -59,9 +59,9 @@ class BizRule extends \yii\base\Model
     public function rules()
     {
         return [
-            [['name', 'className'], 'required'],
-            [['className'], 'string'],
-            [['className'], 'classExists']
+            [['NAME', 'CLASSNAME'], 'required'],
+            [['CLASSNAME'], 'string'],
+            [['CLASSNAME'], 'classExists']
         ];
     }
 
@@ -71,7 +71,7 @@ class BizRule extends \yii\base\Model
     public function classExists()
     {
         if (!class_exists($this->className) || !is_subclass_of($this->className, Rule::className())) {
-            $this->addError('className', "Unknown Class: {$this->className}");
+            $this->addError('classname', "Unknown Class: {$this->className}");
         }
     }
 
@@ -81,8 +81,8 @@ class BizRule extends \yii\base\Model
     public function attributeLabels()
     {
         return [
-            'name' => Yii::t('rbac-admin', 'Name'),
-            'className' => Yii::t('rbac-admin', 'Class Name'),
+            'NAME' => Yii::t('rbac-admin', 'Name'),
+            'CLASSNAME' => Yii::t('rbac-admin', 'Class Name'),
         ];
     }
 
@@ -118,7 +118,7 @@ class BizRule extends \yii\base\Model
     {
         if ($this->validate()) {
             $manager = Yii::$app->authManager;
-            $class = $this->className;
+            $class = $this->classname;
             if ($this->_item === null) {
                 $this->_item = new $class();
                 $isNew = true;

@@ -42,7 +42,7 @@ class RoleController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new AuthItemSearch(['type' => Item::TYPE_ROLE]);
+        $searchModel = new AuthItemSearch(['TYPE' => Item::TYPE_ROLE]);
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
 
         return $this->render('index', [
@@ -101,11 +101,11 @@ class RoleController extends Controller
     public function actionCreate()
     {
         $model = new AuthItem(null);
-        $model->type = Item::TYPE_ROLE;
+        $model->TYPE = Item::TYPE_ROLE;
         if ($model->load(Yii::$app->getRequest()->post()) && $model->save()) {
             MenuHelper::invalidate();
 
-            return $this->redirect(['view', 'id' => $model->name]);
+            return $this->redirect(['view', 'id' => $model->NAME]);
         } else {
             return $this->render('create', ['model' => $model,]);
         }
@@ -123,7 +123,7 @@ class RoleController extends Controller
         if ($model->load(Yii::$app->getRequest()->post()) && $model->save()) {
             MenuHelper::invalidate();
 
-            return $this->redirect(['view', 'id' => $model->name]);
+            return $this->redirect(['view', 'id' => $model->NAME]);
         }
 
         return $this->render('update', ['model' => $model,]);
@@ -153,7 +153,7 @@ class RoleController extends Controller
     public function actionAssign($id, $action)
     {
         $post = Yii::$app->getRequest()->post();
-        $roles = $post['roles'];
+        $roles = $post['ROLES'];
         $manager = Yii::$app->getAuthManager();
         $parent = $manager->getRole($id);
         $error = [];

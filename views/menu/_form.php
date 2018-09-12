@@ -14,12 +14,12 @@ use apaoww\AdminOci8\models\Menu;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
+    <?= $form->field($model, 'NAME')->textInput(['maxlength' => 128]) ?>
 
-    <?= $form->field($model, 'parent_name')->widget('yii\jui\AutoComplete',[
+    <?= $form->field($model, 'PARENT_NAME')->widget('yii\jui\AutoComplete',[
         'options'=>['class'=>'form-control'],
         'clientOptions'=>[
-            'source'=>  Menu::find()->select(['name'])->column()
+            'source'=>  Menu::find()->select(['NAME'])->column()
         ]
     ]) ?>
 
@@ -30,9 +30,9 @@ use apaoww\AdminOci8\models\Menu;
         ]
     ]) ?>
 
-    <?= $form->field($model, 'order')->input('number') ?>
+    <?= $form->field($model, 'ORDER')->input('number') ?>
 
-    <?= $form->field($model, 'data')->textarea(['rows' => 4]) ?>
+    <?= $form->field($model, 'DATA')->textarea(['rows' => 4]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('rbac-admin', 'Create') : Yii::t('rbac-admin', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -23,11 +23,11 @@ use yii\helpers\Json;
  */
 class AuthItem extends \yii\base\Model
 {
-    public $name;
-    public $type;
-    public $description;
-    public $ruleName;
-    public $data;
+    public $NAME;
+    public $TYPE;
+    public $DESCRIPTION;
+    public $RULENAME;
+    public $DATA;
 
     /**
      * @var Item
@@ -43,11 +43,11 @@ class AuthItem extends \yii\base\Model
     {
         $this->_item = $item;
         if ($item !== null) {
-            $this->name = $item->name;
-            $this->type = $item->type;
-            $this->description = $item->description;
-            $this->ruleName = $item->ruleName;
-            $this->data = $item->data === null ? null : Json::encode($item->data);
+            $this->NAME = $item->name;
+            $this->TYPE = $item->type;
+            $this->DESCRIPTION = $item->description;
+            $this->RULENAME = $item->ruleName;
+            $this->DATA = $item->data === null ? null : Json::encode($item->DATA);
         }
         parent::__construct($config);
     }
@@ -58,13 +58,13 @@ class AuthItem extends \yii\base\Model
     public function rules()
     {
         return [
-            [['ruleName'], 'in',
+            [['RULENAME'], 'in',
                 'range' => array_keys(Yii::$app->authManager->getRules()),
                 'message' => 'Rule not exists'],
-            [['name', 'type'], 'required'],
-            [['type'], 'integer'],
-            [['description', 'data', 'ruleName'], 'default'],
-            [['name'], 'string', 'max' => 64]
+            [['NAME', 'TYPE'], 'required'],
+            [['TYPE'], 'integer'],
+            [['DESCRIPTION', 'DATA', 'RULENAME'], 'default'],
+            [['NAME'], 'string', 'max' => 64]
         ];
     }
 
@@ -74,11 +74,11 @@ class AuthItem extends \yii\base\Model
     public function attributeLabels()
     {
         return [
-            'name' => Yii::t('rbac-admin', 'Name'),
-            'type' => Yii::t('rbac-admin', 'Type'),
-            'description' => Yii::t('rbac-admin', 'Description'),
-            'ruleName' => Yii::t('rbac-admin', 'Rule Name'),
-            'data' => Yii::t('rbac-admin', 'Data'),
+            'NAME' => Yii::t('rbac-admin', 'Name'),
+            'TYPE' => Yii::t('rbac-admin', 'Type'),
+            'DESCRIPTION' => Yii::t('rbac-admin', 'Description'),
+            'RULENAME' => Yii::t('rbac-admin', 'Rule Name'),
+            'DATA' => Yii::t('rbac-admin', 'Data'),
         ];
     }
 
@@ -115,20 +115,20 @@ class AuthItem extends \yii\base\Model
         if ($this->validate()) {
             $manager = Yii::$app->authManager;
             if ($this->_item === null) {
-                if ($this->type == Item::TYPE_ROLE) {
-                    $this->_item = $manager->createRole($this->name);
+                if ($this->TYPE == Item::TYPE_ROLE) {
+                    $this->_item = $manager->createRole($this->NAME);
                 } else {
-                    $this->_item = $manager->createPermission($this->name);
+                    $this->_item = $manager->createPermission($this->NAME);
                 }
                 $isNew = true;
             } else {
                 $isNew = false;
                 $oldName = $this->_item->name;
             }
-            $this->_item->name = $this->name;
-            $this->_item->description = $this->description;
-            $this->_item->ruleName = $this->ruleName;
-            $this->_item->data = $this->data === null || $this->data === '' ? null : Json::decode($this->data);
+            $this->_item->name = $this->NAME;
+            $this->_item->description = $this->DESCRIPTION;
+            $this->_item->ruleName = $this->RULENAME;
+            $this->_item->data = $this->DATA === null || $this->DATA === '' ? null : Json::decode($this->DATA);
             if ($isNew) {
                 $manager->add($this->_item);
             } else {

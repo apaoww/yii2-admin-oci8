@@ -177,7 +177,7 @@ class RouteController extends \yii\web\Controller
                         $item->data['params'][$part[0]] = isset($part[1]) ? $part[1] : '';
                     }
                     $this->setDefaultRule();
-                    $item->ruleName = RouteRule::RULE_NAME;
+                    $item->RULENAME = RouteRule::RULE_NAME;
                     $manager->add($item);
                     $manager->addChild($item, $itemAction);
                 } else {

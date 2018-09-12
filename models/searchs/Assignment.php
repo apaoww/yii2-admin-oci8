@@ -13,8 +13,8 @@ use yii\data\ActiveDataProvider;
  */
 class Assignment extends Model
 {
-    public $id;
-    public $username;
+    public $ID;
+    public $USERNAME;
 
     /**
      * @inheritdoc
@@ -22,7 +22,7 @@ class Assignment extends Model
     public function rules()
     {
         return [
-            [['id', 'username'], 'safe'],
+            [['ID', 'USERNAME'], 'safe'],
         ];
     }
 
@@ -32,9 +32,9 @@ class Assignment extends Model
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('rbac-admin', 'ID'),
-            'username' => Yii::t('rbac-admin', 'Username'),
-            'name' => Yii::t('rbac-admin', 'Name'),
+            'ID' => Yii::t('rbac-admin', 'ID'),
+            'USERNAME' => Yii::t('rbac-admin', 'Username'),
+            'NAME' => Yii::t('rbac-admin', 'Name'),
         ];
     }
 
@@ -56,7 +56,7 @@ class Assignment extends Model
             return $dataProvider;
         }
 
-        $query->andFilterWhere(['like', $usernameField, $this->username]);
+        $query->andFilterWhere(['like', $usernameField, $this->USERNAME]);
 
         return $dataProvider;
     }

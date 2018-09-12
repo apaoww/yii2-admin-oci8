@@ -19,12 +19,12 @@ class BizRule extends Model
     /**
      * @var string name of the rule
      */
-    public $name;
+    public $NAME;
 
     public function rules()
     {
         return [
-            [['name'], 'safe']
+            [['NAME'], 'safe']
         ];
     }
 
@@ -34,7 +34,7 @@ class BizRule extends Model
     public function attributeLabels()
     {
         return [
-            'name' => Yii::t('rbac-admin', 'Name'),
+            'NAME' => Yii::t('rbac-admin', 'Name'),
         ];
     }
 
@@ -48,9 +48,9 @@ class BizRule extends Model
         /* @var \yii\rbac\Manager $authManager */
         $authManager = Yii::$app->authManager;
         $models = [];
-        $included = !($this->load($params) && $this->validate() && trim($this->name) !== '');
+        $included = !($this->load($params) && $this->validate() && trim($this->NAME) !== '');
         foreach ($authManager->getRules() as $name => $item) {
-            if ($name != RouteRule::RULE_NAME && ($included || stripos($item->name, $this->name) !== false)) {
+            if ($name != RouteRule::RULE_NAME && ($included || stripos($item->NAME, $this->NAME) !== false)) {
                 $models[$name] = new MBizRule($item);
             }
         }

@@ -43,7 +43,7 @@ class PermissionController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new AuthItemSearch(['type' => Item::TYPE_PERMISSION]);
+        $searchModel = new AuthItemSearch(['TYPE' => Item::TYPE_PERMISSION]);
         $dataProvider = $searchModel->search(Yii::$app->getRequest()->getQueryParams());
 
         return $this->render('index', [
@@ -91,11 +91,11 @@ class PermissionController extends Controller
     public function actionCreate()
     {
         $model = new AuthItem(null);
-        $model->type = Item::TYPE_PERMISSION;
+        $model->TYPE = Item::TYPE_PERMISSION;
         if ($model->load(Yii::$app->getRequest()->post()) && $model->save()) {
             MenuHelper::invalidate();
 
-            return $this->redirect(['view', 'id' => $model->name]);
+            return $this->redirect(['view', 'id' => $model->NAME]);
         } else {
             return $this->render('create', ['model' => $model,]);
         }
@@ -113,7 +113,7 @@ class PermissionController extends Controller
         if ($model->load(Yii::$app->getRequest()->post()) && $model->save()) {
             MenuHelper::invalidate();
 
-            return $this->redirect(['view', 'id' => $model->name]);
+            return $this->redirect(['view', 'id' => $model->NAME]);
         }
 
         return $this->render('update', ['model' => $model,]);
@@ -128,7 +128,7 @@ class PermissionController extends Controller
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        Yii::$app->getAuthManager()->remove($model->item);
+        Yii::$app->getAuthManager()->remove($model->ITEM);
         MenuHelper::invalidate();
 
         return $this->redirect(['index']);

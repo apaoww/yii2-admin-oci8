@@ -18,11 +18,11 @@ class AuthItem extends Model
 
     const TYPE_ROUTE = 101;
 
-    public $name;
-    public $type;
-    public $description;
-    public $rule;
-    public $data;
+    public $NAME;
+    public $TYPE;
+    public $DESCRIPTION;
+    public $RULE;
+    public $DATA;
 
     /**
      * @inheritdoc
@@ -30,8 +30,8 @@ class AuthItem extends Model
     public function rules()
     {
         return [
-            [['name', 'description',], 'safe'],
-            [['type'], 'integer'],
+            [['NAME', 'DESCRIPTION',], 'safe'],
+            [['TYPE'], 'integer'],
         ];
     }
 
@@ -41,12 +41,12 @@ class AuthItem extends Model
     public function attributeLabels()
     {
         return [
-            'name' => Yii::t('rbac-admin', 'Name'),
-            'item_name' => Yii::t('rbac-admin', 'Name'),
-            'type' => Yii::t('rbac-admin', 'Type'),
-            'description' => Yii::t('rbac-admin', 'Description'),
-            'ruleName' => Yii::t('rbac-admin', 'Rule Name'),
-            'data' => Yii::t('rbac-admin', 'Data'),
+            'NAME' => Yii::t('rbac-admin', 'Name'),
+            'ITEM_NAME' => Yii::t('rbac-admin', 'Name'),
+            'TYPE' => Yii::t('rbac-admin', 'Type'),
+            'DESCRIPTION' => Yii::t('rbac-admin', 'Description'),
+            'RULENAME' => Yii::t('rbac-admin', 'Rule Name'),
+            'DATA' => Yii::t('rbac-admin', 'Data'),
         ];
     }
 
@@ -59,11 +59,11 @@ class AuthItem extends Model
     {
         /* @var \yii\rbac\Manager $authManager */
         $authManager = Yii::$app->authManager;
-        if ($this->type == Item::TYPE_ROLE) {
+        if ($this->TYPE == Item::TYPE_ROLE) {
             $items = $authManager->getRoles();
         } else {
             $items = [];
-            if ($this->type == Item::TYPE_PERMISSION) {
+            if ($this->TYPE == Item::TYPE_PERMISSION) {
                 foreach ($authManager->getPermissions() as $name => $item) {
                     if ($name[0] !== '/') {
                         $items[$name] = $item;
@@ -77,11 +77,11 @@ class AuthItem extends Model
                 }
             }
         }
-        if ($this->load($params) && $this->validate() && (trim($this->name) !== '' || trim($this->description) !== '')) {
-            $search = strtolower(trim($this->name));
-            $desc = strtolower(trim($this->description));
+        if ($this->load($params) && $this->validate() && (trim($this->NAME) !== '' || trim($this->DESCRIPTION) !== '')) {
+            $search = strtolower(trim($this->NAME));
+            $desc = strtolower(trim($this->DESCRIPTION));
             $items = array_filter($items, function ($item) use ($search, $desc) {
-                return (empty($search) || strpos(strtolower($item->name), $search) !== false) && ( empty($desc) || strpos(strtolower($item->description), $desc) !== false);
+                return (empty($search) || strpos(strtolower($item->NAME), $search) !== false) && ( empty($desc) || strpos(strtolower($item->DESCRIPTION), $desc) !== false);
             });
         }
 

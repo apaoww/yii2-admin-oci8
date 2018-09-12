@@ -12,12 +12,12 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => 64]) ?>
+    <?= $form->field($model, 'NAME')->textInput(['maxlength' => 64]) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 2]) ?>
+    <?= $form->field($model, 'DESCRIPTION')->textarea(['rows' => 2]) ?>
 
     <?=
-    $form->field($model, 'ruleName')->widget('yii\jui\AutoComplete', [
+    $form->field($model, 'RULENAME')->widget('yii\jui\AutoComplete', [
         'options' => [
             'class' => 'form-control',
         ],
@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
     ])
     ?>
 
-    <?= $form->field($model, 'data')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'DATA')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?php
